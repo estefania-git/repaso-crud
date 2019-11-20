@@ -25,5 +25,17 @@ router.post('/new-coaster', (req, res) => {
         })
 });
 
+router.get('/list', (req, res, next) => {
+    coaster.find().populate('park')
+        .then(coaster => {
+            res.render('coasters/coasters-index', {
+                coaster
+            })
+        })
+
+});
+
+
+
 
 module.exports = router
